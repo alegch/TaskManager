@@ -1,4 +1,7 @@
 TaskManager::Application.routes.draw do
+  resources :stories
+
+
   root :to => 'users#new'
 
   get "logout" => "sessions#destroy", :as => "logout"
@@ -7,6 +10,7 @@ TaskManager::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :stories
   #match  'sessions#new' => 'login'
   # Sample resource route with options:
   #   resources :products do
