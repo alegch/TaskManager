@@ -11,7 +11,6 @@ TaskManager::Application.routes.draw do
   resources :users
   resources :sessions
   resources :stories
-  #match  'sessions#new' => 'login'
   # Sample resource route with options:
   #   resources :products do
   #     member do

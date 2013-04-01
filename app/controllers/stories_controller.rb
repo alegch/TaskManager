@@ -1,4 +1,9 @@
 class StoriesController < ApplicationController
+  before_filter :authenticate
+
+  def authenticate
+    redirect_to :controller => 'sessions', :action => 'new' unless current_user
+  end
   # GET /stories
   # GET /stories.json
   def index
