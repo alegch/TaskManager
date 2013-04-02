@@ -3,9 +3,11 @@
 one:
   name: MyString
   text: MyString
-  user_id: 1
+  sender_id: 1
+  reciver_id: 1
 
 two:
   name: MyString
   text: MyString
-  user_id: 1
+  sender_id : 1
+  reciver_id : 1

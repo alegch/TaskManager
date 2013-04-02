@@ -11,10 +11,13 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @story.user_id %>
+  <b>Reciver:</b>
+  <%= @story.reciver_id %>
 </p>
 
-
+<p>
+  <b>Sender:</b>
+  <%= @story.sender_id %>
+</p>
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

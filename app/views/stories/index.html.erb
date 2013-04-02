@@ -14,7 +14,8 @@
   <tr>
     <td><%= story.name %></td>
     <td><%= story.text %></td>
-    <td><%= story.user_id %></td>
+    <td><%= story.reciver_id  %></td>
+    <td><%= story.sender_id %></td>
     <td><%= link_to 'Show', story %></td>
     <td><%= link_to 'Edit', edit_story_path(story) %></td>
     <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>

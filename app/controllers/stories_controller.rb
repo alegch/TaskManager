@@ -1,11 +1,6 @@
 class StoriesController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_user!
 
-  def authenticate
-    redirect_to :controller => 'sessions', :action => 'new' unless current_user
-  end
-  # GET /stories
-  # GET /stories.json
   def index
     @stories = Story.all
 
@@ -30,7 +25,7 @@ class StoriesController < ApplicationController
   # GET /stories/new.json
   def new
     @story = Story.new
-
+    @users = User.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -45,7 +40,8 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(params[:story])
+    @user = current_user
+    @story = @user.sender_stories.new(params[:story])
 
     respond_to do |format|
       if @story.save

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :sender_stories
   has_secure_password
 
   validates_presence_of :password, :on => :create, :message => "can't be blank"
