@@ -10,7 +10,11 @@ TaskManager::Application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :stories
+  resources :stories do
+    member do
+      put 'update_state'
+    end
+  end
   # Sample resource route with options:
   #   resources :products do
   #     member do

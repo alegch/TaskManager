@@ -8,7 +8,12 @@ gem 'rails', '3.2.12'
 gem 'pg'
 gem 'bcrypt-ruby'
 gem 'factory_girl_rails'
-
+gem 'state_machine'
+gem 'simple_form'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'tconsole'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

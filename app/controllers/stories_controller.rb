@@ -1,85 +1,59 @@
 class StoriesController < ApplicationController
-
+  respond_to :html, :js
   before_filter :authenticate_user!
 
   def index
     @stories = Story.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stories }
-    end
+    respond_with @stories
   end
 
-  # GET /stories/1
-  # GET /stories/1.json
   def show
     @story = Story.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @story }
-    end
+    respond_with @story
   end
 
-  # GET /stories/new
-  # GET /stories/new.json
   def new
     @story = Story.new
     @users = User.all
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @story }
-    end
+
+    respond_with @story
   end
 
-  # GET /stories/1/edit
   def edit
     @story = Story.find(params[:id])
+    respond_with @story
   end
 
-  # POST /stories
-  # POST /stories.json
   def create
     @user = current_user
     @story = @user.sender_stories.new(params[:story])
 
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render json: @story, status: :created, location: @story }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
-    end
+    @story.save
+
+    respond_with @story
   end
 
-  # PUT /stories/1
-  # PUT /stories/1.json
   def update
     @story = Story.find(params[:id])
 
-    respond_to do |format|
-      if @story.update_attributes(params[:story])
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
-    end
+    @story.update_attributes(params[:story])
+
+    redirect_to @story, notice: 'Story was successfully updated.'
   end
 
-  # DELETE /stories/1
-  # DELETE /stories/1.json
   def destroy
     @story = Story.find(params[:id])
     @story.destroy
 
-    respond_to do |format|
-      format.html { redirect_to stories_url }
-      format.json { head :no_content }
-    end
+     redirect_to stories_url
+  end
+
+  def update_state
+    event = params[:event]
+    @story = Story.find(params[:id])
+    @story.send(event)
+    respond_with @story
   end
 end
