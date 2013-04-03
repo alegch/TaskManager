@@ -1,26 +1,16 @@
 <h1>Listing stories</h1>
 
-<table>
+<table id="list_stories">
   <tr>
     <th>Name</th>
     <th>Text</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
+    <th>Reciver ID</th>
+    <th>Sender ID</th>
+    <th>State</th>
     <th></th>
   </tr>
 
-<% @stories.each do |story| %>
-  <tr>
-    <td><%= story.name %></td>
-    <td><%= story.text %></td>
-    <td><%= story.reciver_id  %></td>
-    <td><%= story.sender_id %></td>
-    <td><%= link_to 'Show', story %></td>
-    <td><%= link_to 'Edit', edit_story_path(story) %></td>
-    <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <%= render @stories  %>
 </table>
 
 <br />

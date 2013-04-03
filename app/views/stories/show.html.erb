@@ -19,5 +19,10 @@
   <b>Sender:</b>
   <%= @story.sender_id %>
 </p>
+
+<p>
+  <b>State:</b>
+  <%= @story.state_name %>
+</p>
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

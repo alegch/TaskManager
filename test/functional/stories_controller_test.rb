@@ -9,7 +9,7 @@ class StoriesControllerTest < ActionController::TestCase
     @story_attributes = attributes_for :story
   end
 
-  test "should access auth user" do
+  test "should get stories" do
     get :index
 
     assert_response :success
