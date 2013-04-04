@@ -24,5 +24,20 @@
   <b>State:</b>
   <%= @story.state_name %>
 </p>
+
+<H3> Comments </H3>
+
+<div id='list_comments'>
+  <% @story.comments.each do |comment| -%>
+    <% unless comment.new_record?  %>
+      <%= render comment %>
+    <% end %>
+  <% end -%>
+</div>
+
+<div id='comment_form'>
+  <%= render :partial => "comments/form", :locals => {:comment => @comment, :story_id => @story.id  } %>
+</div>
+
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

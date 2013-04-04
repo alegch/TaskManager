@@ -3,6 +3,7 @@ class Story < ActiveRecord::Base
 
   belongs_to  :sender,  :class_name => "User"
   belongs_to  :reciver, :class_name  => "User"
+  has_many :comments
 
   state_machine :initial => :new do
     event :start do
@@ -24,6 +25,5 @@ class Story < ActiveRecord::Base
     event :restart do
       transition :rejected => :started
     end
-
   end
 end

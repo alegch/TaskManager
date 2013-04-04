@@ -1,4 +1,7 @@
 TaskManager::Application.routes.draw do
+  resources :comments
+
+
   resources :stories
 
 
@@ -11,6 +14,7 @@ TaskManager::Application.routes.draw do
   resources :users
   resources :sessions
   resources :stories do
+    resources :comments
     member do
       put 'update_state'
     end

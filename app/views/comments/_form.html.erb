@@ -1,0 +1,13 @@
+<%= simple_form_for(comment, :remote => true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :commenter %>
+    <%= f.input :body %>
+  </div>
+
+  <%= f.input :story_id, :as => :hidden, :input_html => { :value => story_id } %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -4,56 +4,54 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.all
-
-    respond_with @stories
   end
 
   def show
     @story = Story.find(params[:id])
-
-    respond_with @story
+    @comment = @story.comments.new
   end
 
   def new
     @story = Story.new
     @users = User.all
-
-    respond_with @story
   end
 
   def edit
     @story = Story.find(params[:id])
-    respond_with @story
   end
 
   def create
     @user = current_user
     @story = @user.sender_stories.new(params[:story])
 
-    @story.save
-
-    respond_with @story
+    if @story.save
+      respond_with @story, notice: 'Story was created'
+    else
+      redirect_to new_story_path
+    end
   end
 
   def update
     @story = Story.find(params[:id])
 
-    @story.update_attributes(params[:story])
-
-    redirect_to @story, notice: 'Story was successfully updated.'
+    if @story.update_attributes(params[:story])
+      redirect_to @story, notice: 'Story was successfully updated'
+    else
+      render action: "edit"
+    end
   end
 
   def destroy
     @story = Story.find(params[:id])
     @story.destroy
 
-     redirect_to stories_url
+    redirect_to stories_url
   end
 
   def update_state
     event = params[:event]
     @story = Story.find(params[:id])
     @story.send(event)
-    respond_with @story
   end
+
 end
