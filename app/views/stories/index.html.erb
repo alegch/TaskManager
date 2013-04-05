@@ -8,9 +8,9 @@
     <th></th>
   </tr>
 
-  <%= simple_form_for :search, :url => stories_path, :method => 'get'  do |f| %>
+  <%= simple_form_for :search, :url => stories_path, :method => 'get',  defaults: { input_html: { class: 'navbar-form pull-left' } } do |f| %>
     <%= f.label 'Reciver' %>
-    <%= f.select :reciver_id, User.all.map { |user| [user.email, user.id, { class: user.id }] }, include_blank: true, :selected => params[:search][:reciver_id] %>
+    <%= f.select :reciver_id, User.all.map { |user| [user.email, user.id, { class: user.id }] }, include_blank: true, :selected => @selected_reciver_id %>
     <%= f.button :submit, 'Search' %>
   <% end %>
 
