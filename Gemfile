@@ -7,6 +7,8 @@ gem 'bcrypt-ruby'
 gem 'state_machine'
 gem 'simple_form'
 gem 'less-rails'
+gem 'will_filter'
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

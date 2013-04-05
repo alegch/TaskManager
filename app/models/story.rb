@@ -26,4 +26,13 @@ class Story < ActiveRecord::Base
       transition :rejected => :started
     end
   end
+
+  def self.search_by_reciver_id(reciver_id)
+    if reciver_id.nonzero?
+       @stories = Story.find_all_by_reciver_id(reciver_id)
+    else
+      @stories = Story.all
+    end
+  end
+
 end
