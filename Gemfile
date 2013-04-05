@@ -7,7 +7,6 @@ gem 'bcrypt-ruby'
 gem 'state_machine'
 gem 'simple_form'
 gem 'less-rails'
-gem 'will_filter'
 gem 'kaminari'
 
 group :assets do

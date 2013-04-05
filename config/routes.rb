@@ -1,6 +1,4 @@
 TaskManager::Application.routes.draw do
-  mount WillFilter::Engine => "/will_filter"
-
   resources :comments
 
   resources :stories
