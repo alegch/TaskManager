@@ -27,9 +27,13 @@ class Story < ActiveRecord::Base
     end
   end
 
-  def self.search_by_reciver_id(reciver_id)
-    if reciver_id.nonzero?
-       @stories = Story.find_all_by_reciver_id(reciver_id)
+  def self.search_by_reciver_id_and_state(reciver_id, state)
+    if reciver_id.nonzero? && state.present?
+       @stories = Story.find_all_by_reciver_id_and_state(reciver_id, state)
+    elsif reciver_id.nonzero? && state.blank?
+      @stories = Story.find_all_by_reciver_id(reciver_id)
+    elsif reciver_id.zero? && state.present?
+      @stories = Story.find_all_by_state(state)
     else
       @stories = Story.all
     end

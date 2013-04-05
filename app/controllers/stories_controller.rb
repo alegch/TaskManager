@@ -7,8 +7,9 @@ class StoriesController < ApplicationController
     @selected_reciver_id = 0
     if params[:search]
       @selected_reciver_id = params[:search][:reciver_id].to_i
+      @selected_state = params[:search][:state].to_s
     end
-    @stories = Story.search_by_reciver_id(@selected_reciver_id)
+    @stories = Story.search_by_reciver_id_and_state(@selected_reciver_id, @selected_state)
   end
 
   def show

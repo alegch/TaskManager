@@ -8,11 +8,18 @@
     <th></th>
   </tr>
 
-  <%= simple_form_for :search, :url => stories_path, :method => 'get',  defaults: { input_html: { class: 'navbar-form pull-left' } } do |f| %>
-    <%= f.label 'Reciver' %>
-    <%= f.select :reciver_id, User.all.map { |user| [user.email, user.id, { class: user.id }] }, include_blank: true, :selected => @selected_reciver_id %>
-    <%= f.button :submit, 'Search' %>
-  <% end %>
+  <div class='well'>
+    <%= simple_form_for(:search, :html => {:class => 'form-horizontal' }, :url => stories_path, :method => 'get') do |f| %>
+         <%= f.label 'Reciver' %>
+         <%= f.select :reciver_id, User.all.map { |user| [user.email, user.id] }, include_blank: true, :selected => @selected_reciver_id %>
+         <%= f.label 'State' %>
+         <%= f.select :state, Story.state_machine.states.map {|state| [state.human_name, state.name]},
+           include_blank: true,
+           :selected => @selected_state %>
+
+         <%= f.button :submit, 'Filter' %>
+    <% end %>
+  </div>
 
   <% @stories.each do |story|  %>
     <%= render story  %>
