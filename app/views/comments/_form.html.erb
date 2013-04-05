@@ -3,11 +3,11 @@
 
   <div class="form-inputs">
     <%= f.input :commenter %>
-    <%= f.input :body %>
+    <%= f.input :body, :input_html => { :rows => 5 }%>
   </div>
 
-  <%= f.input :story_id, :as => :hidden, :input_html => { :value => story_id } %>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.input :story_id, :as => :hidden, :input_html => { :value => story_id  } %>
+
+  <%= f.button :submit %>
+
 <% end %>

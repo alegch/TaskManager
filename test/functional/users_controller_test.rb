@@ -15,7 +15,5 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: {email: @user.email, password: @user.password_digest, password_confirmation: @user.password_digest}
     end
-
-    assert_redirected_to root_url
   end
 end

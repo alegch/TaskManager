@@ -6,7 +6,7 @@
   <td><%= story.state_name %></td>
   <td>
     <% story.state_events.each do |event|  %>
-      <%= link_to(Story.human_state_event_name(event), update_state_story_path(story, :event => event), :method => :put, :remote => true)  %>
+      <%= link_to(Story.human_state_event_name(event), update_state_story_path(story, :event => event), :method => :put, :remote => true, :class => "btn")  %>
     <% end %>
   </td>
   <td><%= link_to 'Show', story %></td>

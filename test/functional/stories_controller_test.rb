@@ -10,10 +10,11 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test "should get stories" do
+    @story_instance = create :story
+
     get :index
 
     assert_response :success
-    assert_not_nil assigns(:stories)
   end
 
   test "should get new" do
@@ -26,14 +27,12 @@ class StoriesControllerTest < ActionController::TestCase
     assert_difference('Story.count') do
       post :create, story:  {text: @story_attributes[:text], name: @story_attributes[:name], reciver_id: @user.id}
     end
-
-    assert_redirected_to story_path(assigns(:story))
   end
 
   test "should show story" do
     @story_instance = create :story
 
-    get :show, id: @story_instance
+    get :show, id: @story_instance.id
 
     assert_response :success
   end
@@ -41,7 +40,7 @@ class StoriesControllerTest < ActionController::TestCase
   test "should get edit" do
     @story_instance = create :story
 
-    get :edit, id: @story_instance
+    get :edit, id: @story_instance.id
 
     assert_response :success
   end
@@ -60,8 +59,6 @@ class StoriesControllerTest < ActionController::TestCase
     assert_difference('Story.count', -1) do
       delete :destroy, id: @story.id
     end
-
-    assert_redirected_to stories_path
   end
 
 end

@@ -51,7 +51,7 @@ class StoriesController < ApplicationController
   def update_state
     event = params[:event]
     @story = Story.find(params[:id])
-    @story.send(event)
+    @story.fire_state_event(event)
   end
 
 end

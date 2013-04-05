@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :story do
     name "name of story"
     text "text of story"
-    after(:build) {|story| story.send(:initialize_state_machines, :dynamic => :force)}
+    state "new"
+    after(:create) {|story_item| story_item.send(:initialize_state_machines, :dynamic => :force)}
   end
 end
