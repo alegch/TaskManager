@@ -3,7 +3,7 @@ class Story < ActiveRecord::Base
 
   belongs_to  :sender,  :class_name => "User"
   belongs_to  :reciver, :class_name  => "User"
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   state_machine :initial => :new do
     event :start do

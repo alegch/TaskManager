@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @story.name %>
@@ -29,14 +27,14 @@
 
 <div id='list_comments'>
   <% @story.comments.each do |comment| -%>
-    <% unless comment.new_record?  %>
+    <% if comment.persisted?  %>
       <%= render comment %>
     <% end %>
   <% end -%>
 </div>
 
 <div id='comment_form'>
-  <%= render :partial => "comments/form", :locals => {:comment => @comment, :story_id => @story.id  } %>
+  <%= render 'comments/form', story: @story, comment: @comment %>
 </div>
 
 <%= link_to 'Edit', edit_story_path(@story) %> |

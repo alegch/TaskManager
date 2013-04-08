@@ -31,7 +31,8 @@ class StoriesController < ApplicationController
     @story = @user.sender_stories.new(params[:story])
 
     if @story.save
-      respond_with @story, notice: 'Story was created'
+      flash[:notice] = 'Story was created'
+      redirect_to story_path(@story)
     else
       redirect_to new_story_path
     end
@@ -41,23 +42,25 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
 
     if @story.update_attributes(params[:story])
-      redirect_to @story, notice: 'Story was successfully updated'
+      flash[:notice] = 'Story was updated'
+      redirect_to story_path(@story)
     else
       render action: "edit"
     end
-  end
-
-  def destroy
-    @story = Story.find(params[:id])
-    @story.destroy
-
-    redirect_to stories_url
   end
 
   def update_state
     event = params[:event]
     @story = Story.find(params[:id])
     @story.fire_state_event(event)
+    respond_with @story
+  end
+
+  def destroy
+    @story = Story.find(params[:id])
+    @story.destroy
+
+    redirect_to stories_path
   end
 
 end

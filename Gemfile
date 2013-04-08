@@ -8,6 +8,8 @@ gem 'state_machine'
 gem 'simple_form'
 gem 'less-rails'
 gem 'kaminari'
+gem 'gon'
+gem 'haml-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

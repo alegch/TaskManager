@@ -14,9 +14,7 @@
   <%= f.input :name %>
   <%= f.input :text %>
 
-  <%= f.input :reciver do %>
-    <%= f.select :reciver_id, User.all.map {|user| [user.email, user.id]} %>
-  <% end %>
+  <%= f.association :reciver, :label_method => lambda { |user| "#{user.email}" } %>
 
   <%= f.input :state do %>
     <%= f.select :state, Story.state_machine.states.map {|state| state.human_name} %>

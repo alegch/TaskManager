@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.save
-      respond_with @comment, notice: 'Comment created'
+      flash[:notice] = 'Commment created'
+      respond_with @comment
     else
       redirect_to new_comment_path
     end

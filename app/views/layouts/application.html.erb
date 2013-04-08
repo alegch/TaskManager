@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>TaskManager</title>
+  <%= include_gon(watch: true) %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -25,11 +26,23 @@
     </div>
   </div>
   <div class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+    <div class='row'>
+      <div class='span8'>
+         <% flash.each do |name, msg| %>
+           <%= content_tag :div, msg, :id => "flash_#{name}" %>
+         <% end %>
 
-    <%= yield %>
+         <%= yield %>
+      </div>
+
+      <div class='span4'>
+        <% if signed_in?  %>
+          <p> You are logged as <i> <%= current_user.email %> </i> </p>
+          <%= link_to 'Sign out', session_path, :method => :delete  %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
