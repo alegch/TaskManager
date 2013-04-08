@@ -10,6 +10,7 @@ gem 'less-rails'
 gem 'kaminari'
 gem 'gon'
 gem 'haml-rails'
+gem 'html2haml'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

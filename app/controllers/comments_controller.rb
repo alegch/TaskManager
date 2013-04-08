@@ -10,10 +10,13 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = 'Commment created'
-      respond_with @comment
+      render :create #@comment
     else
       redirect_to new_comment_path
     end
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+  end
 end

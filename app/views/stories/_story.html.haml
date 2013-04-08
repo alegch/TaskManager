@@ -1,0 +1,12 @@
+<tr id=#{story.id}>
+%td= story.name
+%td= story.text
+%td= story.reciver_id
+%td= story.sender_id
+%td= story.state_name
+%td
+  - story.state_events.each do |event|
+    = link_to(Story.human_state_event_name(event), update_state_story_path(story, :event => event), :method => :put, :remote => true, :class => "btn")
+%td= link_to 'Show', story
+%td= link_to 'Edit', edit_story_path(story)
+%td= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }
