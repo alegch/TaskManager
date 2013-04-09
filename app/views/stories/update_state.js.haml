@@ -1,3 +1,0 @@
-var story_id = #{@story.id};
-var id = '#' + story_id;
-$(id).replaceWith("#{escape_javascript(render @story)}");

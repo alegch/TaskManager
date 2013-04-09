@@ -9,6 +9,8 @@ class StoriesController < ApplicationController
       @selected_reciver_id = params[:search][:reciver_id].to_i
       @selected_state = params[:search][:state].to_s
     end
+     @you_int = 2323
+    gon.you_int = @you_int
     @stories = Story.search_by_reciver_id_and_state(@selected_reciver_id, @selected_state)
   end
 
@@ -53,7 +55,7 @@ class StoriesController < ApplicationController
     event = params[:event]
     @story = Story.find(params[:id])
     @story.fire_state_event(event)
-    respond_with @story
+    render layout: false
   end
 
   def destroy
