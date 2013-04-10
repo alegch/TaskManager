@@ -19,7 +19,7 @@
     - if comment.persisted?
       = render comment
 #comment_form
-  = render 'comments/form', story: @story, comment: @comment
+  = render 'web/comments/form', story: @story, comment: @comment
 = link_to 'Edit', edit_story_path(@story)
 |
 \#{link_to 'Back', stories_path}

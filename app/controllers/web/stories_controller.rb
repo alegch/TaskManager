@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class Web::StoriesController < Web::ApplicationController
   respond_to :html, :js
   before_filter :authenticate_user!
 

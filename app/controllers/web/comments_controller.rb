@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Web::CommentsController < Web::ApplicationController
   respond_to :html, :js
 
   def index
