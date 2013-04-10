@@ -10,7 +10,8 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test "should get stories" do
-    @story_instance = create :story
+    #@story_instance = create :story
+    post :create, story:  {text: @story_attributes[:text], name: @story_attributes[:name], reciver_id: @user.id}
 
     get :index
 
