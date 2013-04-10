@@ -35,7 +35,7 @@ class Story < ActiveRecord::Base
     elsif reciver_id.zero? && state.present?
       @stories = Story.find_all_by_state(state)
     else
-      @stories = Story.all
+      @stories = Story.scoped
     end
   end
 

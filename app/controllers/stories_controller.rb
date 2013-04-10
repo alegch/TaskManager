@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.all
+    @users = User.scoped
     @selected_reciver_id = 0
     if params[:search]
       @selected_reciver_id = params[:search][:reciver_id].to_i
@@ -19,7 +19,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
-    @users = User.all
+    @users = User.scoped
   end
 
   def edit

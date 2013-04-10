@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @comments = Comment.all
+    @comments = Comment.scoped
   end
 
   def create
