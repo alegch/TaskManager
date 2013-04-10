@@ -8,9 +8,9 @@ class CommentsControllerTest < ActionController::TestCase
     @story = create :story
   end
 
-  test "should create comment" do
+  test "should create comment with ajax" do
     assert_difference('Comment.count') do
-      post :create, story_id: @comment[:story_id], comment: @comment
+      xhr :post, :create, story_id: @story.id, comment: @comment
     end
   end
 

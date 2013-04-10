@@ -4,6 +4,5 @@ FactoryGirl.define do
   factory :comment do
     commenter "MyString"
     body "MyText"
-    story_id 1
   end
 end
