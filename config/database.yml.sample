@@ -6,8 +6,6 @@ development:
 
 test:
   adapter: postgresql
-  username: postgres
-  password:
   encoding: unicode
   database: TaskManager_test
   pool: 5
