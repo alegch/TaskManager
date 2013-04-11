@@ -10,7 +10,7 @@ class Web::UsersController < Web::ApplicationController
       flash[:notice] = 'Signed up!'
       redirect_to root_url
     else
-      render new_user_path
+      render action: 'new'
     end
   end
 

@@ -4,7 +4,7 @@ class Web::StoriesController < Web::ApplicationController
 
   def index
     @users = User.scoped
-    @search = Story.search(params[:q])
+    @search = Story.ransack(params[:q])
     @stories = @search.result
     @search.build_sort if @search.sorts.empty?
   end

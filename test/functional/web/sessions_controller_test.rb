@@ -12,12 +12,16 @@ class Web::SessionsControllerTest < ActionController::TestCase
   end
 
   test "should auth" do
-    post :create, {email: @user.email, password: @user.password}
+    attrs = attributes_for :user
+
+    post :create, attrs
+
     assert signed_in?, 'fail in auth'
   end
 
   test "should unauth" do
     get :destroy
+
     assert !signed_in?
   end
 

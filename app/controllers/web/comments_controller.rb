@@ -1,10 +1,6 @@
 class Web::CommentsController < Web::ApplicationController
   respond_to :html, :js
 
-  def index
-    @comments = Comment.scoped
-  end
-
   def create
     @comment = Comment.new(params[:comment])
 
@@ -13,7 +9,4 @@ class Web::CommentsController < Web::ApplicationController
     end
   end
 
-  def show
-    @comment = Comment.find(params[:id])
-  end
 end

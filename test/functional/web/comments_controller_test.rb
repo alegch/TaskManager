@@ -4,14 +4,17 @@ class Web::CommentsControllerTest < ActionController::TestCase
   setup do
     @user = create :user
     sign_in(@user)
-    @comment = attributes_for(:comment)
     @story = create :story
   end
 
   test "should create comment with ajax" do
-    assert_difference('Comment.count') do
-      xhr :post, :create, story_id: @story.id, comment: @comment
-    end
+    attrs = attributes_for(:comment)
+    attrs[:story_id] = @story.id
+    xhr :post, :create, story_id: @story.id, comment: attrs
+
+    comment = @story.comments.find_by_body(attrs[:body])
+
+    assert comment
   end
 
 end

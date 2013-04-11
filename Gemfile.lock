@@ -192,6 +192,7 @@ DEPENDENCIES
   ransack
   sass-rails (~> 3.2.3)
   simple_form
+  simplecov
   state_machine
   tconsole
   therubyracer

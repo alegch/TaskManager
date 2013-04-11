@@ -7,7 +7,7 @@ TaskManager::Application.routes.draw do
     resource :session, :only => [:new, :create, :destroy]
 
     resources :stories do
-      resources :comments, :only => [:index, :create, :show]
+      resources :comments, :only => [:create]
       member do
         put 'update_state'
       end

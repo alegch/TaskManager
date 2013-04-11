@@ -6,12 +6,12 @@ class Web::StoriesControllerTest < ActionController::TestCase
     @user = create :user
     sign_in @user
 
-    @story_attributes = attributes_for :story
+    @story = create :story
   end
 
   test "should get stories" do
     @story = create :story
-    p @story.errors
+
     get :index
 
     assert_response :success
@@ -24,41 +24,43 @@ class Web::StoriesControllerTest < ActionController::TestCase
   end
 
   test "should create story" do
-    assert_difference('Story.count') do
-      post :create, story:  {text: @story_attributes[:text], name: @story_attributes[:name], reciver_id: @user.id}
-    end
+    attrs = attributes_for :story
+    attrs[:sender_id] = @user.id
+
+    post :create, story: attrs
+
+    story = @user.sender_stories.find_by_name(attrs[:name])
+    assert story
   end
 
   test "should show story" do
-    @story_instance = create :story
-
-    get :show, id: @story_instance.id
+    get :show, id: @story
 
     assert_response :success
   end
 
   test "should get edit" do
-    @story_instance = create :story
-
-    get :edit, id: @story_instance.id
+    get :edit, id: @story
 
     assert_response :success
   end
 
   test "should update story" do
-    @story = create :story
+    attrs = attributes_for :story
 
-    put :update, id: @story.id, story: { name: @story_attributes[:name], text: @story_attributes[:text], reciver_id: @user.id }
+    put :update, id: @story, story: attrs
 
     assert_redirected_to story_path(@story)
+
+    story = Story.find_by_name(attrs[:name])
   end
 
   test "should destroy story" do
-    @story = create :story
+    delete :destroy, id: @story
 
-    assert_difference('Story.count', -1) do
-      delete :destroy, id: @story.id
-    end
+    assert_response :redirect
+
+    assert !Story.exists?(@story)
   end
 
 end
