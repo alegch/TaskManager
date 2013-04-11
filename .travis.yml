@@ -9,4 +9,4 @@ script:
   - bundle exec rake
 before_script:
   - cp config/database.yml.sample config/database.yml
-  - psql -c 'create database TaskManager_test' -U postgres
+  - psql -c 'create database tm_test' -U postgres
