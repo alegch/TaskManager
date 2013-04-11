@@ -8,6 +8,7 @@ class Web::SessionsControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
+
     assert_response :success
   end
 
@@ -16,11 +17,15 @@ class Web::SessionsControllerTest < ActionController::TestCase
 
     post :create, attrs
 
+    assert_response :redirect
+
     assert signed_in?, 'fail in auth'
   end
 
   test "should unauth" do
     get :destroy
+
+    assert_response :redirect
 
     assert !signed_in?
   end

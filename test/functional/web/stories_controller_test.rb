@@ -29,6 +29,8 @@ class Web::StoriesControllerTest < ActionController::TestCase
 
     post :create, story: attrs
 
+    assert_response :redirect
+
     story = @user.sender_stories.find_by_name(attrs[:name])
     assert story
   end
@@ -53,6 +55,7 @@ class Web::StoriesControllerTest < ActionController::TestCase
     assert_redirected_to story_path(@story)
 
     story = Story.find_by_name(attrs[:name])
+    assert story
   end
 
   test "should destroy story" do
