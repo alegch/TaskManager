@@ -22,6 +22,12 @@ class Web::SessionsControllerTest < ActionController::TestCase
     assert signed_in?, 'fail in auth'
   end
 
+  test "shold show login form if invalid login/password" do
+    post :create, {}
+
+    assert_template :new
+  end
+
   test "should unauth" do
     get :destroy
 

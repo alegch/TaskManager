@@ -20,4 +20,11 @@ class Web::UsersControllerTest < ActionController::TestCase
     assert user
   end
 
+  test "should show registration form if not save user" do
+    post :create, user: {}
+
+    assert_response :success
+    assert_template :new
+  end
+
 end
