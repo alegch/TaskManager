@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'gon'
 gem 'haml-rails'
 gem 'html2haml'
+gem "ransack"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

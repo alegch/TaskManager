@@ -7,18 +7,19 @@
     %th Sender ID
     %th State
     %th
-  = simple_form_for(:search, :url => stories_path, :method => 'get', :html => { :class => 'form-horizontal' }) do |f|
+
+  = search_form_for @search do |f|
     .row
-      %span.span3
-        = f.input :reciver_id, :label => 'Reciver',:collection => User.all.map { |user| [user.email, user.id] }, :include_blank => true, :selected => @selected_reciver_id, :required => false
-      %span.span3
-        = f.input :state, :label => 'State', :collection => Story.state_machine.states.map {|state| [state.human_name, state.name]}, |
-          include_blank: true,                                                                                                       |
-          :selected => @selected_state , :required => false                                                                          |
-      %span.span2
-        = f.label "Action", :required => false
-        = f.button :submit, 'Filter'
-      %span.span4
+      .span3
+        = f.label :state_eq, 'State'
+        = f.select :state_eq, Story.state_machine.states.map {|state| [state.human_name, state.name] }, :include_blank => true
+      .span3
+        = f.label :user_eq
+        = f.select :reciver_email_eq, User.scoped.map { |user| user.email }, :include_blank => true
+      .span2
+        = f.label 'Action', :required => false
+        = f.submit 'Filter'
+
   - @stories.each do |story|
     = render story
 %br/

@@ -4,12 +4,9 @@ class Web::StoriesController < Web::ApplicationController
 
   def index
     @users = User.scoped
-    @selected_reciver_id = 0
-    if params[:search]
-      @selected_reciver_id = params[:search][:reciver_id].to_i
-      @selected_state = params[:search][:state].to_s
-    end
-    @stories = Story.search_by_reciver_id_and_state(@selected_reciver_id, @selected_state)
+    @search = Story.search(params[:q])
+    @stories = @search.result
+    @search.build_sort if @search.sorts.empty?
   end
 
   def show
