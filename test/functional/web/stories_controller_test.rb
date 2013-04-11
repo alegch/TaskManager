@@ -10,9 +10,8 @@ class Web::StoriesControllerTest < ActionController::TestCase
   end
 
   test "should get stories" do
-    #@story_instance = create :story
-    post :create, story:  {text: @story_attributes[:text], name: @story_attributes[:name], reciver_id: @user.id}
-
+    @story = create :story
+    p @story.errors
     get :index
 
     assert_response :success
