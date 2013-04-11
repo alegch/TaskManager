@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: TaskManager_development
+  database: tm_development
   pool: 5
   username: alegch
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: TaskManager_test
+  database: tm_test
   pool: 5
   username: alegch
   password:
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: TaskManager_production
+  database: tm_production
   pool: 5
   username: alegch
   password:

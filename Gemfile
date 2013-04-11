@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'coveralls', require: false
   gem 'tconsole'
 end
 
