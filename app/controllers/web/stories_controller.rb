@@ -11,7 +11,6 @@ class Web::StoriesController < Web::ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @comment = @story.comments.new
   end
 
   def new
@@ -25,7 +24,7 @@ class Web::StoriesController < Web::ApplicationController
 
   def create
     @user = current_user
-    @story = @user.sender_stories.new(params[:story])
+    @story = @user.sender_stories.build(params[:story])
 
     if @story.save
       flash[:notice] = 'Story was created'
