@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Confirm password'
+    errors:
+      messages:
+        blank: 'Field can not be blank'
+        confirmation: 'Must be equal'
+      models:
+        user:
+          attributes:
+            email:
+              email: 'Invalid email'

@@ -14,7 +14,7 @@ class Web::UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     @attrs[:password_confirmation] = @attrs[:password]
-    post :create, user: @attrs
+    post :create, user_registration_type: @attrs
 
     user = User.find_by_email(@attrs[:email])
     assert user

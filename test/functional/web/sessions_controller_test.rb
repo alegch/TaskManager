@@ -15,7 +15,7 @@ class Web::SessionsControllerTest < ActionController::TestCase
   test "should auth" do
     attrs = attributes_for :user
 
-    post :create, attrs
+    post :create, user_sign_in_type: attrs
 
     assert_response :redirect
 

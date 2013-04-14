@@ -66,4 +66,12 @@ class Web::StoriesControllerTest < ActionController::TestCase
     assert !Story.exists?(@story)
   end
 
+  test "should update state story" do
+    event = @story.state_events.first
+
+    put :update_state, id: @story, event: event
+
+    assert_response :success
+  end
+
 end

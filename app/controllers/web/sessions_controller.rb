@@ -1,24 +1,26 @@
+
 class Web::SessionsController < Web::ApplicationController
 
   def new
+    @type = UserSignInType.new
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      sign_in(user)
+    @type = UserSignInType.new(params[:user_sign_in_type])
+
+    if @type.valid?
+      user = @type.user
       flash[:notice] = 'Logged in!'
-      redirect_to root_url
+      sign_in(user)
+      redirect_to params[:from] || root_path
     else
-      flash.now.alert = 'Invalid email or password'
-      render 'new'
+      render :new
     end
   end
 
   def destroy
     sign_out
-    flash[:notice] = 'Logged out!'
-    redirect_to root_url
+    redirect_to root_path
   end
 
 end
