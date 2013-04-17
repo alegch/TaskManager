@@ -1,0 +1,47 @@
+ru:
+  layouts:
+    web:
+      application:
+        enter_as: 'Вы авторизованы как'
+        sign_out: 'Выйти'
+        stories: 'Задачи'
+  web:
+    stories:
+      form:
+        error_message: 'Не удалось создать задачу'
+      index:
+        add_story: 'Добавить задачу'
+      story:
+        edit: 'Редактировать'
+        destroy: 'Удалить'
+        show: 'Показать'
+        are_you_sure: 'Вы уверены?'
+      new:
+        title: 'Новая задача'
+        back: 'К списку задач'
+      show:
+        title: 'Обзор задачи'
+        back: 'К списку задач'
+        edit: 'Редактировать задачу'
+        comments: 'Комментарии'
+      edit:
+        title: 'Редактирование задачи'
+        back: 'К списку задач'
+        show: 'Показать'
+    sessions:
+      new:
+        title: 'Авторизация'
+      form:
+        login: 'Логин'
+        password: 'Пароль'
+        no_account: 'Нет аккаунта?'
+        sign_in: 'Войти'
+        sign_up: 'Зарегистрироваться'
+    users:
+      new:
+        title: 'Регистрация'
+        create_user: 'Зарегистрироваться'
+    comments:
+      comment:
+        commenter: 'Имя'
+        body: 'Тело сообщения'

@@ -1,6 +1,6 @@
-= simple_form_for(:comment, url: story_comments_path(story), :remote => true) do |f|
+= simple_form_for(comment, url: story_comments_path(story), :remote => true) do |f|
   = f.error_notification
   .form-inputs
     = f.input :commenter
-    = f.input :body, :input_html => { :rows => 5 }
+    = f.input :body
   = f.button :submit

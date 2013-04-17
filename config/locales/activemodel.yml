@@ -1,10 +1,9 @@
-en:
+ru:
   activemodel:
     errors:
       models:
         user_sign_in_type:
           attributes:
             email:
-              email: 'Invalid email'
-              user_or_password_invalid: 'Email or password invalid!'
-
+              email: 'Введен некорректный email'
+              user_or_password_invalid: 'Email и/или пароль неверны!'

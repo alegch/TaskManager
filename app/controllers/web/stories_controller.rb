@@ -27,10 +27,11 @@ class Web::StoriesController < Web::ApplicationController
     @story = @user.sender_stories.build(params[:story])
 
     if @story.save
-      flash[:notice] = 'Story was created'
+      flash_success
       redirect_to story_path(@story)
     else
-      redirect_to new_story_path
+      flash_error
+      render action: 'new'
     end
   end
 
@@ -38,9 +39,10 @@ class Web::StoriesController < Web::ApplicationController
     @story = Story.find(params[:id])
 
     if @story.update_attributes(params[:story])
-      flash[:notice] = 'Story was updated'
+      flash_success
       redirect_to story_path(@story)
     else
+      flash_error
       render action: "edit"
     end
   end

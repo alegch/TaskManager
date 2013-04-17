@@ -1,26 +1,29 @@
-= link_to 'alert', root_path, :remote => true, :class => 'button-link'
 %table#list_stories
   %tr
-    %th Name
-    %th Text
-    %th Reciver ID
-    %th Sender ID
-    %th State
-    %th
+    %th 
+      = Story.human_attribute_name(:name)
+    %th 
+      = Story.human_attribute_name(:text)
+    %th 
+      = Story.human_attribute_name(:reciver)
+    %th 
+      = Story.human_attribute_name(:sender)
+    %th 
+      = Story.human_attribute_name(:state)
 
   = search_form_for @search do |f|
     .row
       .span3
-        = f.label :state_eq, 'State'
+        = f.label :state
         = f.select :state_eq, Story.state_machine.states.map {|state| [state.human_name, state.name] }, :include_blank => true
       .span3
-        = f.label :user_eq
+        = f.label :email
         = f.select :reciver_email_eq, User.scoped.map { |user| user.email }, :include_blank => true
       .span2
-        = f.label 'Action', :required => false
-        = f.submit 'Filter'
+        %br
+        = f.submit
 
   - @stories.each do |story|
     = render story
 %br/
-= link_to 'New Story', new_story_path,  :class => "btn"
+= link_to t('.add_story'), new_story_path,  :class => "btn"

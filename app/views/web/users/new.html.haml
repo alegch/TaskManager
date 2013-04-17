@@ -1,6 +1,7 @@
-%h1 Sign Up
+%h1 
+  = t('.title')
 = simple_form_for @user, url: users_path do |f|
   = f.input :email, placeholder: 'user@domain.com'
-  = f.input :password, hint: 'No special characters.'
+  = f.input :password
   = f.input :password_confirmation
-  = f.button :submit, 'Sign Up'
+  = f.button :submit, t('.create_user')

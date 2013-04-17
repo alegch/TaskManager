@@ -1,16 +1,46 @@
-en:
+ru:
   activerecord:
+    models:
+      user: 'пользователь'
+      story: 'задача'
+      comment: 'комментарий'
     attributes:
       user:
-        email: 'Email'
-        password: 'Password'
-        password_confirmation: 'Confirm password'
+        email: 'email'
+        password_confirmation: 'подтверждение пароля'
+        password: 'пароль'
+      story:
+        name: 'название'
+        text: 'текст'
+        sender: 'отправитель'
+        reciver: 'получатель'
+        comments: 'комментарии'
+        state: 'состояние'
+      comment:
+        body: 'сообщение'
+        commenter: 'пользователь'
+    state_machines:
+      story:
+        states:
+          new: 'новая'
+          started: 'в процессе'
+          finished: 'завершена'
+          accepted: 'закрыта'
+          rejected: 'отклонена'
+        events:
+          start: 'Начать'
+          finish: 'Закончить'
+          accept: 'Принять'
+          reject: 'Отклонить'
+          restart: 'Заново'
     errors:
-      messages:
-        blank: 'Field can not be blank'
-        confirmation: 'Must be equal'
       models:
-        user:
+        user_registration_type:
           attributes:
             email:
-              email: 'Invalid email'
+              email: 'Введен некорректный email'
+        stateful_model:
+          attributes:
+            state:
+              invalid_transition: 'Невозможно изменить состояние из %{value} через %{event}'
+

@@ -1,0 +1,12 @@
+ru:
+  helpers:
+     submit:
+       user:
+         create: 'Зарегестрироваться'
+         update: 'Обновить'
+       story:
+         create: 'Создать задачу'
+         update: 'Обновить задачу'
+       comment:
+          create: 'Добавить комментарий'
+          update: 'Обновить комментарий'

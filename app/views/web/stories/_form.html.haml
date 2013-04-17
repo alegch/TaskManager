@@ -3,7 +3,7 @@
     #error_explanation
       %h2
         = pluralize(@story.errors.count, "error")
-        prohibited this story from being saved:
+        = t('.error_message')
       %ul
         - @story.errors.full_messages.each do |msg|
           %li= msg
@@ -11,5 +11,5 @@
   = f.input :text
   = f.association :reciver, :label_method => lambda { |user| "#{user.email}" }
   = f.input :state do
-    = f.select :state, Story.state_machine.states.map {|state| state.human_name}
+    = f.select :state, Story.state_machine.states.map {|state| [state.human_name, state.name]}
   = f.button :submit

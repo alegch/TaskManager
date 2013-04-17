@@ -14,6 +14,8 @@ gem 'html2haml'
 gem 'ransack'
 gem 'virtus'
 gem 'validates'
+gem 'rails-i18n'
+gem 'untranslated'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -1,0 +1,13 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    labels:
+      defaults:
+        email: 'Email'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      comment:
+        commenter: 'Имя'
+        body: 'Сообщение'
+      

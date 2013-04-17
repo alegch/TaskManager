@@ -1,11 +1,10 @@
 = simple_form_for @type, url: session_path(from: params[:from]), html: { class: 'form-type-login' } do |f|
   .row
     .span6
-      %h5= t '.login'
-      = f.input :email, :tabindex => 1
-      = f.input :password, :tabindex => 2
+      = f.input :email
+      = f.input :password
 
       .pull-left
-        = f.button :submit, 'Sign In', :class => 'btn btn-shine', :tabindex => 3
-        No account?
-        = link_to 'Sign Up', new_user_path
+        = f.button :submit, t('.sign_in'), :class => 'btn btn-shine', :tabindex => 3
+        = t('.no_account')
+        = link_to t('.sign_up'), new_user_path

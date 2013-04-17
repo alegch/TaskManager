@@ -10,10 +10,11 @@ class Web::SessionsController < Web::ApplicationController
 
     if @type.valid?
       user = @type.user
-      flash[:notice] = 'Logged in!'
+      flash_success
       sign_in(user)
       redirect_to params[:from] || root_path
     else
+      flash_error
       render :new
     end
   end
